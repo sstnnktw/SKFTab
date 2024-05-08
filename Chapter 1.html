@@ -300,55 +300,44 @@
       </tr>
     </thead>
     <tbody id="table">
-      <tr>
-        <td>3.1 มีความสุขจากการใช้เงินตอนนี้ดีกว่า ไม่จำเป็นต้องเก็บออมเผื่อวันข้างหน้า</td>
-        <td style="text-align: center;"><input type="radio" name="BT03" value="5"></td>
-        <td style="text-align: center;"><input type="radio" name="BT03" value="4"></td>
-        <td style="text-align: center;"><input type="radio" name="BT03" value="3"></td>
-        <td style="text-align: center;"><input type="radio" name="BT03" value="2"></td>
-        <td style="text-align: center;"><input type="radio" name="BT03" value="1"></td>
-      </tr>
-      <tr>
-        <td>3.2 ใช้ชีวิตเพื่อวันนี้เท่านั้น ไม่ต้องวางแผนเพื่อวันข้างหน้าก็ได้</td>
-        <td style="text-align: center;"><input type="radio" name="BT04" value="5"></td>
-        <td style="text-align: center;"><input type="radio" name="BT04" value="4"></td>
-        <td style="text-align: center;"><input type="radio" name="BT04" value="3"></td>
-        <td style="text-align: center;"><input type="radio" name="BT04" value="2"></td>
-        <td style="text-align: center;"><input type="radio" name="BT04" value="1"></td>
-      </tr>
-      <tr>
-        <td>3.3 ท่านดูแลเรื่องเงินของตัวเองอย่างใกล้ชิด เช่น รู้ว่ามีรายได้เท่าไรและจะมีรายจ่ายเท่าไร</td>
-        <td style="text-align: center;"><input type="radio" name="BT05" value="5"></td>
-        <td style="text-align: center;"><input type="radio" name="BT05" value="4"></td>
-        <td style="text-align: center;"><input type="radio" name="BT05" value="3"></td>
-        <td style="text-align: center;"><input type="radio" name="BT05" value="2"></td>
-        <td style="text-align: center;"><input type="radio" name="BT05" value="1"></td>
-      </tr>
-      <tr>
-        <td>3.4 ท่านตั้งเป้าเรื่องเงินไว้และพยายามจะไปให้ถึงเป้านั้นให้ได้ แม้จะต้องใช้เวลาก็ตาม</td>
-        <td style="text-align: center;"><input type="radio" name="BT06" value="5"></td>
-        <td style="text-align: center;"><input type="radio" name="BT06" value="4"></td>
-        <td style="text-align: center;"><input type="radio" name="BT06" value="3"></td>
-        <td style="text-align: center;"><input type="radio" name="BT06" value="2"></td>
-        <td style="text-align: center;"><input type="radio" name="BT06" value="1"></td>
-      </tr>
-      <tr>
-        <td>3.5 ท่านเปลี่ยนรหัสผ่านการเข้าใช้งานระบบออนไลน์เป็นประจำ</td>
-        <td style="text-align: center;"><input type="radio" name="BT07" value="5"></td>
-        <td style="text-align: center;"><input type="radio" name="BT07" value="4"></td>
-        <td style="text-align: center;"><input type="radio" name="BT07" value="3"></td>
-        <td style="text-align: center;"><input type="radio" name="BT07" value="2"></td>
-        <td style="text-align: center;"><input type="radio" name="BT07" value="1"></td>
-      </tr>
-      <tr>
-        <td>3.6 การใช้ระบบไวไฟ (Wi-Fi) สาธารณะเพื่อซื้อของออนไลน์เป็นสิ่งที่ปลอดภัย</td>
-        <td style="text-align: center;"><input type="radio" name="BT08" value="5"></td>
-        <td style="text-align: center;"><input type="radio" name="BT08" value="4"></td>
-        <td style="text-align: center;"><input type="radio" name="BT08" value="3"></td>
-        <td style="text-align: center;"><input type="radio" name="BT08" value="2"></td>
-        <td style="text-align: center;"><input type="radio" name="BT08" value="1"></td>
-      </tr>
-      
+    
+    <script>
+        var elements = document.querySelectorAll("[id]");
+        var inputIds = Array.from(elements).map(function(element) {
+            return element.id;
+        });
+
+        function InsertSub() {
+            var tableBody = document.getElementById('table');
+            var itemCount = 6;
+            var itemNames = [
+                "3.1 มีความสุขจากการใช้เงินตอนนี้ดีกว่า ไม่จำเป็นต้องเก็บออมเผื่อวันข้างหน้า",
+                "3.2 ใช้ชีวิตเพื่อวันนี้เท่านั้น ไม่ต้องวางแผนเพื่อวันข้างหน้าก็ได้",
+                "3.3 ท่านดูแลเรื่องเงินของตัวเองอย่างใกล้ชิด เช่น รู้ว่ามีรายได้เท่าไรและจะมีรายจ่ายเท่าไร",
+                "3.4 ท่านตั้งเป้าเรื่องเงินไว้และพยายามจะไปให้ถึงเป้านั้นให้ได้ แม้จะต้องใช้เวลาก็ตาม",
+                "3.5 ท่านเปลี่ยนรหัสผ่านการเข้าใช้งานระบบออนไลน์เป็นประจำ",
+                "3.6 การใช้ระบบไวไฟ (Wi-Fi) สาธารณะเพื่อซื้อของออนไลน์เป็นสิ่งที่ปลอดภัย",
+                "ค่าซ่อมแซม/บำรุงรักษาเครื่องใช้อื่น ๆ"
+            ];
+
+            for (var i = 0; i < itemCount; i++) {
+                var row = document.createElement('tr');
+                var ID = "BT" + (i + 3).toString().padStart(2, '0');
+
+                row.innerHTML = `
+                    <td>${itemNames[i]}</td>
+                    <td style="text-align: center;"><input type="radio" name="${ID}" value="5"></td>
+                    <td style="text-align: center;"><input type="radio" name="${ID}" value="4"></td>
+                    <td style="text-align: center;"><input type="radio" name="${ID}" value="3"></td>
+                    <td style="text-align: center;"><input type="radio" name="${ID}" value="2"></td>
+                    <td style="text-align: center;"><input type="radio" name="${ID}" value="1"></td>
+                `;
+                tableBody.appendChild(row);
+            }
+        }
+
+        InsertSub();
+        </script>      
     </tbody>
   </table>
   
@@ -551,21 +540,21 @@
 
 <script>
 
-<!--------------------------------------------------------------------->
+// ---------------------------------------------------------------------
 
 function index() {
     saveToLocalStorage();
     window.location.href = 'index.html';}
 
-<!--------------------------------------------------------------------->
+// ---------------------------------------------------------------------
 
 function next() {
     saveToLocalStorage();
     window.location.href = 'Chapter 2.html';}
 
-<!--------------------------------------------------------------------->
+// ---------------------------------------------------------------------
 
-<!-- อื่น ๆ ระบุ... -->
+// อื่น ๆ ระบุ...
 
 function Others(fieldId) {
     var field = document.getElementById(fieldId);
@@ -582,7 +571,7 @@ function Others(fieldId) {
     }
 }
 
-<!--------------------------------------------------------------------->
+// ---------------------------------------------------------------------
     
 function checkAndToggle(inputId, divId) {
     var input = document.getElementById(inputId);
@@ -594,41 +583,42 @@ function checkAndToggle(inputId, divId) {
     	div.style.display = 'none';
     }
 }
-
-<!--------------------------------------------------------------------->
-
-function checkDisability(input) {
-        var selectElement = document.getElementById(input);
-        var selectedValue = selectElement.value;
-        var message = document.createElement('div');
-        
-        if (selectedValue === ".") {
-        	alert('กรุณาเลือกประเภทความพิการ');
-            message.textContent = "กรุณาเลือกประเภทความพิการ";
-            message.style.color = "red";
-            var selectDiv = selectElement.parentElement;
-            selectDiv.appendChild(message);
-            setTimeout(function() {
-                message.remove();
-            }, 3000);
-            selectElement.value = "";
-        }
-}
     
-<!--------------------------------------------------------------------->
+// ---------------------------------------------------------------------
     
 function allF() {
     Others('BT23');
 }
     
-<!--------------------------------------------------------------------->
+// ---------------------------------------------------------------------
 
     var elements = document.querySelectorAll("[id]");
     var inputIds = Array.from(elements).map(function(element) {
         return element.id;
     });
     
-<!--------------------------------------------------------------------->
+    
+// radio
+
+	window.addEventListener('load', function() {
+
+    var radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    radioButtons.forEach(function(radioButton) {
+        var storedValue = localStorage.getItem(radioButton.name);
+        if (storedValue === radioButton.value) {
+            radioButton.checked = true;
+        }
+    });
+
+    radioButtons.forEach(function(radioButton) {
+        radioButton.addEventListener('change', function() {
+            localStorage.setItem(this.name, this.value);
+        });
+    });
+});
+    
+// ---------------------------------------------------------------------
 
 function saveToLocalStorage() {
     inputIds.forEach(function(id) {
@@ -636,7 +626,7 @@ function saveToLocalStorage() {
     });
 }
 
-<!--------------------------------------------------------------------->
+// ---------------------------------------------------------------------
 
 function resetLocalStorage() {
     localStorage.clear();
@@ -645,7 +635,7 @@ function resetLocalStorage() {
     window.onload();
 }
 
-<!--------------------------------------------------------------------->
+// ---------------------------------------------------------------------
 
 window.onload = function() {
     inputIds.forEach(function(id) {
