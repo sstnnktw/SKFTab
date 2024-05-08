@@ -1,0 +1,672 @@
+<SES pre Tablet>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SES Chapter 1</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    font-size: 16px;
+    display: flex;
+  }
+  .bot {
+    background-color: #003366;
+    color: #fff;
+    padding: 25px;
+    text-align:center;
+    font-size: 24px;
+  }
+  .chapter {
+    background-color: #edecf3;
+    padding: 20px;
+    font-size: 20px;
+    text-align:center;
+  }
+  .head0 {
+    background-color: #C8DAF0;
+    padding: 15px;
+    font-size: 18px;
+  }
+  .head {
+    background-color: #D9ECFF;
+    padding: 15px;
+    padding-left: 20px;
+    font-size: 16px;
+  }
+  .head2 {
+    background-color: #E7F5FF;
+    padding: 15px;
+    padding-left: 40px;
+    font-size: 16px;
+  }
+  .frame, .frame2 {
+    padding-left: 40px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .frame {
+    padding-left: 40px;
+  }
+  .frame2 {
+    padding-left: 80px;
+  }
+  select, input {
+    height: 35px;
+    width: 250px;
+    font-size: 16px;   
+  }
+  .etc input{
+    font-size: 16px;
+    height: 35px;
+    width: 250px;
+    margin-top: 15px;
+  }
+  input[type="radio"] {
+    height: 13px; /* ลดความสูง */
+    width: 13px; /* ลดความกว้าง */  
+}
+    
+    /*--------------------------------*/
+    
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 60px;
+        font-size: 16px;
+    }
+    table th, table td {
+        border: 1px solid #C8DAF0;
+        text-align: left;
+    }
+    table th {
+        padding: 10px;
+    	font-weight: normal;
+        background-color: #E7F5FF;
+        text-align: center;
+    }
+    table td {
+        padding: 15px;
+    	font-weight: normal;
+        text-align: left;
+    }
+    thead {
+        position: sticky;
+        top: 0;
+        background: #eee;
+    }
+    
+    /*--------------------------------*/
+    
+    .nn {
+    background-color: #FFF9E7;
+    font-size: 15px;
+    padding: 10px;
+    padding-left: 20px;
+  }
+  .remark {
+    color: #FF0000;
+    font-size: 15px;
+    padding-left: 5px;
+  }  
+  .note {    
+    font-size: 18px;
+    background-color: #E2EFDA;
+    padding: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  .notebox {
+    height: 200px;    
+    font-size: 16px;
+    color: #FF0000;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #000;
+    margin-top: 10px;
+    white-space: pre-line;
+    overflow-y: auto;
+  }
+  #outer{
+    width:100%;
+    text-align: center;
+  }
+.inner{
+    display: inline-block;
+  }
+	
+/*--------------------------------*/
+    
+  input[type="number"]::-webkit-outer-spin-button, 
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+</style>
+</head>
+<body>
+
+<!----------------------------------------------- HEADDING ----------------------------------------------->
+
+<div class="bot"><b>การสำรวจการติดตามระดับความรู้ และการเข้าถึงบริการทางการเงินของครัวเรือน</b></div>
+
+<div class="chapter">
+    <b>ตอนที่ 1 การบริหารจัดการเงินส่วนบุคคล</b>
+    <br><span class="remark">ข้อที่มี * หมายถึง ต้องมีการบันทึกข้อมูล <u>ปล่อย blank ไม่ได้</u></span>
+</div>
+
+<div class="head0"><b>ตอนที่ 1 หมวด ก. การวางแผนรายรับรายจ่ายและการออม</b></div>
+
+<!--------------------------------------------- HM01N1 : คำนำหน้าชื่อ --------------------------------------------->
+
+  <div class="head">
+  	  <span style="color: #ff0000;"><b>*</b></span>
+      <b>HM01N1 : คำนำหน้าชื่อ</b>
+  </div>
+  
+  <div class="frame">
+      <select id="HM01N1" onchange="updateGender(); Others('HM01N1');">
+          <option value="">-- กรุณาเลือก --</option>
+          <option value="1">1 - นาย</option>
+          <option value="2">2 - นาง</option>
+          <option value="3">3 - นางสาว</option>
+          <option value="4">4 - เด็กชาย</option>
+          <option value="5">5 - เด็กหญิง</option>
+          <option value="6">6 - อื่น ๆ (ระบุ)</option>
+      </select>
+      
+      <div id="HM01N1T" style="display: none;" class="etc">
+          <input id="HM01N1_T" type="text" placeholder = "ระบุ">
+          <span class="remark">บันทึกเป็นตัวแปร HM01N1_T</span>
+      </div>
+      <br><br><span class="remark">ถ้า HM01N1 = 1 - 5 → เพศ(HM03) เปลี่ยนตามคำนำหน้าชื่อ (auto)</span>
+      <br><span class="remark">ถ้า HM01N1 = 6 → แสดงตัวเลือกของ HM03 ให้เลือก</span>
+  </div>
+
+<!----------------------------->
+
+<script>
+    function updateGender() {
+        var titleSelect = document.getElementById('HM01N1');
+        var genderSelect = document.getElementById('HM03');
+
+        var selectedTitle = titleSelect.value;
+
+        if (["1", "4"].includes(selectedTitle)) {
+            genderSelect.innerHTML = '<option value="1" selected>1 - ชาย</option>';
+            genderSelect.style.backgroundColor = '#EEEEEE';
+            genderSelect.style.color = '#BFBFBF';
+            genderSelect.readOnly  = true;
+        } else if (["2", "3", "5"].includes(selectedTitle)) {
+            genderSelect.innerHTML = '<option value="2" selected>2 - หญิง</option>';
+            genderSelect.style.backgroundColor = '#EEEEEE';
+            genderSelect.style.color = '#BFBFBF';
+            genderSelect.readOnly  = true;
+        } else {
+            genderSelect.innerHTML = '<option value="">-- กรุณาเลือก --</option><option value="1">1 - ชาย</option><option value="2">2 - หญิง</option>';
+            genderSelect.style.backgroundColor = '';
+            genderSelect.style.color = '';
+            genderSelect.readOnly  = false;
+        }
+    }
+</script>
+
+
+<!--------------------------------------------- HM01N2 : ชื่อ --------------------------------------------->
+
+  <div class="head">
+  	  <span style="color: #ff0000;"><b>*</b></span>
+      <b>HM01N2 : ชื่อ</b>
+  </div>
+  
+  <div class="frame">
+      <input id="HM01N2" type="text">
+  </div>
+
+<!--------------------------------------------- HM01N3 : นามสกุล --------------------------------------------->
+
+  <div class="head">
+  	  <span style="color: #ff0000;"><b>*</b></span>
+      <b>HM01N3 : นามสกุล</b>
+  </div>
+  
+  <div class="frame">
+      <input id="HM01N3" type="text">
+  </div>
+
+<!--------------------------------------------- BT01 : ท่านตัดสินใจเรื่องการใช้เงินของท่านด้วยตัวเอง --------------------------------------------->
+
+  <div class="head">
+  	  <span style="color: #ff0000;"><b>*</b></span>
+      <b>1. ท่านตัดสินใจเรื่องการใช้เงินของท่านด้วยตัวเอง</b>
+  </div>
+  
+  <div class="frame">
+      <select id="BT01">
+          <option value="">-- กรุณาเลือก --</option>
+          <option value="0">0 - ไม่ใช่</option>
+          <option value="1">1 - ใช่</option>
+      </select>
+  </div>
+
+<!--------------------------------------------- BT02 : ใครเป็นผู้รับผิดชอบและตัดสินใจเรื่องการใช้เงินในครัวเรือน --------------------------------------------->
+
+  <div class="head">
+  	  <span style="color: #ff0000;"><b>*</b></span>
+      <b>2. ใครเป็นผู้รับผิดชอบและตัดสินใจเรื่องการใช้เงินในครัวเรือน</b>
+  </div>
+  
+  <div class="frame">
+      <select id="BT02">
+          <option value="">-- กรุณาเลือก --</option>
+          <option value="1">1 - ท่าน</option>
+          <option value="2">2 - ท่านและบุคคลอื่นในครัวเรือน เช่น คู่สมรส</option>
+          <option value="3">3 - คู่สมรสของท่าน</option>
+          <option value="4">4 - สมาชิกท่านอื่นในครัวเรือน</option>
+          <option value="5">5 - บุคคลอื่นนอกครัวเรือน</option>
+          <option value="6">6 - ไม่มี</option>
+      </select>
+  </div>
+
+<!--------------------------------------------- BT0310 --------------------------------------------->
+
+	<div class="head"><b>3. ท่านมีความคิดเห็นอย่างไร กับประโยคเหล่านี้ </b></div>
+    
+    <table style="margin-bottom: 0px;">
+    <thead>
+      <tr>
+        <th rowspan="3" style="min-width: 625px;"><b>หัวข้อความคิดเห็น</b></th>
+        <th colspan="5"><b>ระดับความคิดเห็น (5 → 1)</b></th>
+      </tr>
+      <tr>
+        <th><b>เห็นด้วย<br>อย่างมาก</b></th>
+        <th><b>เห็นด้วย</b></th>
+        <th><b>เฉย ๆ</b></th>
+        <th><b>ไม่เห็นด้วย</b></th>
+        <th><b>ไม่เห็นด้วย<br>อย่างมาก</b></th>
+      </tr>
+      <tr>
+        <th style="min-width: 75px;">ระดับ 5</th>
+        <th style="min-width: 75px;">ระดับ 4</th>
+        <th style="min-width: 75px;">ระดับ 3</th>
+        <th style="min-width: 75px;">ระดับ 2</th>
+        <th style="min-width: 75px;">ระดับ 1</th>
+      </tr>
+    </thead>
+    <tbody id="table">
+      <tr>
+        <td>3.1 มีความสุขจากการใช้เงินตอนนี้ดีกว่า ไม่จำเป็นต้องเก็บออมเผื่อวันข้างหน้า</td>
+        <td style="text-align: center;"><input type="radio" name="BT03" value="5"></td>
+        <td style="text-align: center;"><input type="radio" name="BT03" value="4"></td>
+        <td style="text-align: center;"><input type="radio" name="BT03" value="3"></td>
+        <td style="text-align: center;"><input type="radio" name="BT03" value="2"></td>
+        <td style="text-align: center;"><input type="radio" name="BT03" value="1"></td>
+      </tr>
+      <tr>
+        <td>3.2 ใช้ชีวิตเพื่อวันนี้เท่านั้น ไม่ต้องวางแผนเพื่อวันข้างหน้าก็ได้</td>
+        <td style="text-align: center;"><input type="radio" name="BT04" value="5"></td>
+        <td style="text-align: center;"><input type="radio" name="BT04" value="4"></td>
+        <td style="text-align: center;"><input type="radio" name="BT04" value="3"></td>
+        <td style="text-align: center;"><input type="radio" name="BT04" value="2"></td>
+        <td style="text-align: center;"><input type="radio" name="BT04" value="1"></td>
+      </tr>
+      <tr>
+        <td>3.3 ท่านดูแลเรื่องเงินของตัวเองอย่างใกล้ชิด เช่น รู้ว่ามีรายได้เท่าไรและจะมีรายจ่ายเท่าไร</td>
+        <td style="text-align: center;"><input type="radio" name="BT05" value="5"></td>
+        <td style="text-align: center;"><input type="radio" name="BT05" value="4"></td>
+        <td style="text-align: center;"><input type="radio" name="BT05" value="3"></td>
+        <td style="text-align: center;"><input type="radio" name="BT05" value="2"></td>
+        <td style="text-align: center;"><input type="radio" name="BT05" value="1"></td>
+      </tr>
+      <tr>
+        <td>3.4 ท่านตั้งเป้าเรื่องเงินไว้และพยายามจะไปให้ถึงเป้านั้นให้ได้ แม้จะต้องใช้เวลาก็ตาม</td>
+        <td style="text-align: center;"><input type="radio" name="BT06" value="5"></td>
+        <td style="text-align: center;"><input type="radio" name="BT06" value="4"></td>
+        <td style="text-align: center;"><input type="radio" name="BT06" value="3"></td>
+        <td style="text-align: center;"><input type="radio" name="BT06" value="2"></td>
+        <td style="text-align: center;"><input type="radio" name="BT06" value="1"></td>
+      </tr>
+      <tr>
+        <td>3.5 ท่านเปลี่ยนรหัสผ่านการเข้าใช้งานระบบออนไลน์เป็นประจำ</td>
+        <td style="text-align: center;"><input type="radio" name="BT07" value="5"></td>
+        <td style="text-align: center;"><input type="radio" name="BT07" value="4"></td>
+        <td style="text-align: center;"><input type="radio" name="BT07" value="3"></td>
+        <td style="text-align: center;"><input type="radio" name="BT07" value="2"></td>
+        <td style="text-align: center;"><input type="radio" name="BT07" value="1"></td>
+      </tr>
+      <tr>
+        <td>3.6 การใช้ระบบไวไฟ (Wi-Fi) สาธารณะเพื่อซื้อของออนไลน์เป็นสิ่งที่ปลอดภัย</td>
+        <td style="text-align: center;"><input type="radio" name="BT08" value="5"></td>
+        <td style="text-align: center;"><input type="radio" name="BT08" value="4"></td>
+        <td style="text-align: center;"><input type="radio" name="BT08" value="3"></td>
+        <td style="text-align: center;"><input type="radio" name="BT08" value="2"></td>
+        <td style="text-align: center;"><input type="radio" name="BT08" value="1"></td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="3" style="min-width: 625px;"><b>หัวข้อ</b></th>
+        <th colspan="5"><b>ระดับ (5 → 1)</b></th>
+      </tr>
+      <tr>
+        <th><b>เป็นประจำ</b></th>
+        <th><b>บ่อย ๆ</b></th>
+        <th><b>ทำบ้าง<br>บางครั้ง</b></th>
+        <th><b>นาน ๆ<br>ครั้ง</b></th>
+        <th><b>ไม่เคย</b></th>
+      </tr>
+      <tr>
+        <th style="min-width: 75px;">ระดับ 5</th>
+        <th style="min-width: 75px;">ระดับ 4</th>
+        <th style="min-width: 75px;">ระดับ 3</th>
+        <th style="min-width: 75px;">ระดับ 2</th>
+        <th style="min-width: 75px;">ระดับ 1</th>
+      </tr>
+    </thead>
+    <tbody id="table">
+      <tr>
+        <td>3.7 ก่อนจะซื้อของอะไร ท่านจะคิดให้ดีก่อนว่ามีเงินพอจ่ายได้</td>
+        <td style="text-align: center;"><input type="radio" name="BT09" value="5"></td>
+        <td style="text-align: center;"><input type="radio" name="BT09" value="4"></td>
+        <td style="text-align: center;"><input type="radio" name="BT09" value="3"></td>
+        <td style="text-align: center;"><input type="radio" name="BT09" value="2"></td>
+        <td style="text-align: center;"><input type="radio" name="BT09" value="1"></td>
+      </tr>
+      <tr>
+        <td>3.8 ท่านจ่ายบิล/หนี้ต่าง ๆ เช่น ค่าน้ำ ค่าไฟ ค่าบัตรเครดิต ตรงเวลา</td>
+        <td style="text-align: center;"><input type="radio" name="BT10" value="5"></td>
+        <td style="text-align: center;"><input type="radio" name="BT10" value="4"></td>
+        <td style="text-align: center;"><input type="radio" name="BT10" value="3"></td>
+        <td style="text-align: center;"><input type="radio" name="BT10" value="2"></td>
+        <td style="text-align: center;"><input type="radio" name="BT10" value="1"></td>
+      </tr>      
+    </tbody>
+  </table>
+
+  <div class="head">
+      <b>4. ท่านได้ทำสิ่งต่อไปนี้สำหรับตัวท่าน หรือครัวเรือนของท่านหรือไม่</b>
+  </div>
+  
+<!--------------------------------------------- 4.  --------------------------------------------->
+  
+<div id="container"></div>
+
+    <script>
+        var components = [
+            { label: '4.1 วางแผนจัดการรายรับ-รายจ่าย', id: 'BT11' },
+            { label: '4.2 จดบันทึกค่าใช้จ่าย', id: 'BT12' },
+            { label: '4.3 เก็บเงินสำหรับจ่ายบิลแยกจากค่าใช้จ่ายประจำวัน', id: 'BT13' },
+            { label: '4.4 จดบันทึกบิลที่ใกล้ครบกำหนดจ่ายเพื่อจ่ายให้ตรงเวลา', id: 'BT14' },
+            { label: '4.5 ใช้แอปพลิเคชันหรือเครื่องมือในการบริหารจัดการเงินและติดตามการใช้จ่าย', id: 'BT15' },
+            { label: '4.6 ตั้งการชำระเงินอัตโนมัติสำหรับค่าใช้จ่ายประจำ', id: 'BT16' }
+        ];
+
+        function generateInputElements(components) {
+            var container = document.getElementById('container');
+            var inputsHTML = '';
+            components.forEach(function(component) {
+                inputsHTML += `
+                    <div class="head2">
+                        <span style="color: #ff0000;"><b>*</b></span>
+                        <b>${component.label}</b>
+                    </div>
+                    <div class="frame2">
+                        <select id="${component.id}">
+                            <option value="">-- กรุณาเลือก --</option>
+                            <option value="0">0 - ไม่ทำ</option>
+                            <option value="1">1 - ทำ</option>
+                        </select>
+                    </div>
+                `;
+            });
+            container.innerHTML = inputsHTML;
+        }
+
+        generateInputElements(components);
+    </script>
+
+  <div class="head">
+      <b>5. <u>ในรอบ 12 เดือนที่ผ่านมา</u> วิธีใดเป็นวิธีที่ท่านใช้ในการเก็บออม</b>
+  </div>
+  
+<!--------------------------------------------- 5.  --------------------------------------------->
+  
+<div id="container2"></div>
+
+    <script>
+        var components = [
+            { label: '<b>5.1 เก็บเป็นเงินสด</b>', id: 'BT17' },
+            { label: '<b>5.2 เก็บเงินในบัญชีที่เปิดไว้เพื่อออมเงินโดยเฉพาะ</b>', id: 'BT18' },
+            { label: '<b>5.3 ให้เงินแก่คนในครอบครัว/ครัวเรือนเก็บแทนท่าน</b> (รวมญาติและคนนอกครัวเรือน)', id: 'BT19' },
+            { label: '<b>5.4 ฝากเงินในสหกรณ์ กลุ่มออมทรัพย์/กองทุนหมู่บ้าน/ธนาคารชุมชน/เครดิตยูเนี่ยน</b>', id: 'BT20' },
+            { label: '<b>5.5 นำไปลงทุนในเงินดิจิทัล</b> (เช่น Bitcoin, Ethereum และ Libra)', id: 'BT21' },
+            { label: '<b>5.6 นำไปลงทุนในผลิตภัณฑ์ทางการเงินต่าง ๆ</b>  (เช่น พันธบัตร หุ้น กองทุนรวม) (ไม่รวม กบข.)', id: 'BT22' }
+        ];
+
+        function generateInputElements(components) {
+            var container = document.getElementById('container2');
+            var inputsHTML = '';
+            components.forEach(function(component) {
+                inputsHTML += `
+                    <div class="head2">
+                        <span style="color: #ff0000;"><b>*</b></span>
+                        ${component.label}
+                    </div>
+                    <div class="frame2">
+                        <select id="${component.id}">
+                            <option value="">-- กรุณาเลือก --</option>
+                            <option value="0">0 - ไม่ทำ</option>
+                            <option value="1">1 - ทำ</option>
+                        </select>
+                    </div>
+                `;
+            });
+            container.innerHTML = inputsHTML;
+        }
+
+        generateInputElements(components);
+    </script>
+    
+      <div class="head2">
+  	  <span style="color: #ff0000;"><b>*</b></span>
+      <b>5.7 อื่น ๆ (ระบุ)</b>
+  </div>
+  
+  <div class="frame2">
+      <select id="BT23" onchange="Others('BT23');">
+          <option value="">-- กรุณาเลือก --</option>
+          	<option value="0">0 - ไม่ทำ</option>
+          	<option value="1">1 - ทำ</option>
+      </select>
+      
+      <div id="BT23T" style="display: none;" class="etc">
+          <input type="text" placeholder = "ระบุกองทุนที่กู้ยืม">
+      	  <span class="remark">บันทึกเป็นตัวแปร BT23_T</span>
+      </div>
+  </div>
+  
+<!--------------------------------------------- 6.  --------------------------------------------->
+
+  <div class="head">
+      <b>6. ท่านคิด<u>วางแผนการเก็บออมไว้สำหรับยามชรา/เกษียณอายุ</u> หรือไม่</b>
+  </div>
+  
+  <div class="frame">
+      <select id="BT24">
+          <option value="">-- กรุณาเลือก --</option>
+          	<option value="1">1 - ยังไม่ได้คิด/วางแผน</option>
+          	<option value="2">2 - คิด/วางแผนแล้ว แต่ยังไม่เริ่มทำ</option>
+          	<option value="3">3 - คิด/วางแผนแล้ว แต่ยังทำไม่ได้ตามแผนที่วางไว้/ตั้งใจไว้</option>
+          	<option value="4">4 - คิด/วางแผนแล้ว และทำได้ตามแผนที่วางไว้</option>
+      </select>
+  </div>
+  
+<!--------------------------------------------- 7.  --------------------------------------------->
+
+  <div class="head">
+      <b>7. ตั้งแต่วันนี้ หากท่าน<u>ต้องหยุดทำงานกะทันหันโดยไม่มีกำหนด</u> ท่านคิดว่า <u>เงินออมที่ท่านสะสม</u>จากอดีตจนถึงปัจจุบัน<br>จะนำมาเป็นค่าใช้จ่ายของท่านได้นานเท่าไร (โดยมีค่าใช้จ่ายต่อเดือนเท่าเดิม)</b>
+  </div>
+  
+  <div class="frame">
+      <select id="BT24">
+          <option value="">-- กรุณาเลือก --</option>
+          	<option value="1">1 - ไม่ทราบ/ไม่แน่ใจ</option>
+          	<option value="2">2 - น้อยกว่า 1 สัปดาห์</option>
+          	<option value="3">3 - อยู่ได้อย่างน้อย 1 สัปดาห์ แต่ไม่ถึง 1 เดือน</option>
+          	<option value="4">4 - อยู่ได้อย่างน้อย 1 เดือน แต่ไม่ถึง 3 เดือน</option>
+          	<option value="5">5 - อยู่ได้อย่างน้อย 3 เดือน แต่ไม่ถึง 6 เดือน</option>
+          	<option value="6">6 - ตั้งแต่ 6 เดือนขึ้นไป</option>
+      </select>
+  </div>
+
+
+<!-------------------------------------------- NOTE -------------------------------------------->
+
+<div class="note">
+  <b>NOTE :</b>
+   <span class="remark">(C1_NOTE)</span>
+  <div id="rec01_note" class="notebox" contenteditable="true">*** เพิ่มฟังก์ชันพิมพ์ด้วยเสียง ***</div>
+</div>
+
+<div id="outer">
+  <div class="inner"><button onclick="index()">Index</button></div>
+  <div class="inner"><button onclick="next()">Next</button></div>
+</div>
+
+<button onclick="resetLocalStorage()">Reset localStorage</button>
+<button onclick="()">Check</button>
+
+
+<!----------------------------------------------------------------------------------------------------------->
+
+<script>
+
+<!--------------------------------------------------------------------->
+
+function index() {
+    saveToLocalStorage();
+    window.location.href = 'index.html';}
+
+<!--------------------------------------------------------------------->
+
+function next() {
+    saveToLocalStorage();
+    window.location.href = 'Chapter 2.html';}
+
+<!--------------------------------------------------------------------->
+
+<!-- อื่น ๆ ระบุ... -->
+
+function Others(fieldId) {
+    var field = document.getElementById(fieldId);
+    var others = document.getElementById(fieldId + "T");
+    var shouldShowOthers = {
+        "BT23": "1"
+    };
+
+    if (shouldShowOthers[fieldId] && field.value === shouldShowOthers[fieldId]) {
+        others.style.display = "block";
+        others.value = "";
+    } else {
+        others.style.display = "none";
+    }
+}
+
+<!--------------------------------------------------------------------->
+    
+function checkAndToggle(inputId, divId) {
+    var input = document.getElementById(inputId);
+    var div = document.getElementById(divId);
+    if (parseInt(input.value) > 0) { 
+    	div.style.display = 'block';
+    } 
+    else {
+    	div.style.display = 'none';
+    }
+}
+
+<!--------------------------------------------------------------------->
+
+function checkDisability(input) {
+        var selectElement = document.getElementById(input);
+        var selectedValue = selectElement.value;
+        var message = document.createElement('div');
+        
+        if (selectedValue === ".") {
+        	alert('กรุณาเลือกประเภทความพิการ');
+            message.textContent = "กรุณาเลือกประเภทความพิการ";
+            message.style.color = "red";
+            var selectDiv = selectElement.parentElement;
+            selectDiv.appendChild(message);
+            setTimeout(function() {
+                message.remove();
+            }, 3000);
+            selectElement.value = "";
+        }
+}
+    
+<!--------------------------------------------------------------------->
+    
+function allF() {
+    Others('BT23');
+}
+    
+<!--------------------------------------------------------------------->
+
+    var elements = document.querySelectorAll("[id]");
+    var inputIds = Array.from(elements).map(function(element) {
+        return element.id;
+    });
+    
+<!--------------------------------------------------------------------->
+
+function saveToLocalStorage() {
+    inputIds.forEach(function(id) {
+        localStorage.setItem(id, document.getElementById(id).value);
+    });
+}
+
+<!--------------------------------------------------------------------->
+
+function resetLocalStorage() {
+    localStorage.clear();
+    alert("localStorage has been reset.");
+
+    window.onload();
+}
+
+<!--------------------------------------------------------------------->
+
+window.onload = function() {
+    inputIds.forEach(function(id) {
+        var inputField = document.getElementById(id);
+        inputField.addEventListener('input', function() {
+        saveToLocalStorage();
+        
+        });
+
+        var value = localStorage.getItem(id);
+        if (value !== null) {
+            inputField.value = value;
+        } else {
+            inputField.value = "";
+        }
+    });
+    saveToLocalStorage();
+    allF();
+};
+
+</script>
+
+</body>
+</html>
