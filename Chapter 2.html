@@ -1,0 +1,437 @@
+<SES pre Tablet>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOT Chapter 2</title>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    font-size: 16px;
+    display: flex;
+  }
+  .bot {
+    background-color: #003366;
+    color: #fff;
+    padding: 25px;
+    text-align:center;
+    font-size: 24px;
+  }
+  .chapter {
+    background-color: #EFF1FF;
+    padding: 20px;
+    font-size: 20px;
+    text-align:center;
+  }
+  .head0 {
+    background-color: #C8DAF0;
+    padding: 15px;
+    font-size: 18px;
+  }
+  .head {
+    background-color: #D9ECFF;
+    padding: 15px;
+    padding-left: 20px;
+    font-size: 16px;
+  }
+  .head2 {
+    background-color: #E7F5FF;
+    padding: 15px;
+    padding-left: 40px;
+    font-size: 16px;
+  }
+  .head3 {
+    background-color: #EFF1FF;
+    padding: 15px;
+    padding-left: 80px;
+    font-size: 16px;
+  }
+  .frame, .frame2, .frame3 {
+    padding-left: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .frame {
+    padding-left: 40px;
+  }
+  .frame2 {
+    padding-left: 80px;
+  }
+  .frame3 {
+    padding-left: 110px;
+  }
+  select, input {
+    height: 35px;
+    width: 250px;
+    font-size: 16px;   
+  }
+  .etc input{
+    font-size: 16px;
+    height: 35px;
+    width: 250px;
+    margin-top: 15px;
+  }
+  input.G, select.G{
+    border: 0.5px solid #000; 
+    background-color: #EEEEEE;
+    color: #BFBFBF;
+    pointer-events: none;
+  }
+  input[type="radio"] {
+    height: 13px;
+    width: 13px; 
+  }
+    
+    /*--------------------------------*/
+    
+    table {
+        border-collapse: collapse;
+        margin-bottom: 60px;
+        font-size: 16px;
+    }
+    table th, table td {
+        border: 1px solid #C8DAF0;
+        text-align: left;
+    }
+    table th {
+        padding: 10px;
+    	font-weight: normal;
+        background-color: #E7F5FF;
+        text-align: center;
+    }
+    table td {
+        padding: 15px;
+        padding-left: 40px;
+    	font-weight: normal;
+        text-align: left;
+    }
+    thead {
+        position: sticky;
+        top: 0;
+        background: #eee;
+    }
+    
+    /*--------------------------------*/
+  
+  .nn, .nn2 {
+    background-color: #FFF9E7;
+    font-size: 15px;
+    padding: 10px;
+  }
+  .nn {
+    padding-left: 40px;
+  }
+  .nn2 {
+    padding-left: 20px;
+  }
+  .remark {
+    color: #FF0000;
+    font-size: 15px;
+    padding-left: 5px;
+    text-align: left;
+  }
+  .note {    
+    font-size: 18px;
+    background-color: #E2EFDA;
+    padding: 20px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+  }
+  .notebox {
+    height: 200px;    
+    font-size: 16px;
+    color: #FF0000;
+    background-color: #fff;
+    padding: 10px;
+    border: 1px solid #000;
+    margin-top: 10px;
+    white-space: pre-line;
+    overflow-y: auto;
+  }
+  #outer{
+    width:100%;
+    text-align: center;
+  }
+.inner{
+    display: inline-block;
+  }
+	
+/*--------------------------------*/
+    
+  input[type="number"]::-webkit-outer-spin-button, 
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+</style>
+</head>
+<body>
+
+<!----------------------------------------------- HEADDING ----------------------------------------------->
+
+<div class="bot"><b>การสำรวจการติดตามระดับความรู้ และการเข้าถึงบริการทางการเงินของครัวเรือน</b></div>
+
+<div class="chapter">
+    <b>ตอนที่ 2 : การส่งเสริมการให้บริการทางการเงินอย่างกว้างขวางและทั่วถึง</b>
+    <div class="remark">
+    <u>remark</u>
+    	<br><b>** ถามเฉพาะหัวหน้าครัวเรือน **</b>
+    	<br>- ข้อที่มี * หมายถึง ต้องมีการบันทึกข้อมูล <u>ปล่อย blank ไม่ได้</u>
+    </div>
+</div>
+
+<div class="head0"><b>หมวด ก. การเข้าถึงบริการทางการเงิน</b></div>
+
+<!--------------------------------------------- FP01 --------------------------------------------->
+
+  <div class="head">
+  	  <span style="color: #ff0000;"><b>*</b></span>
+      <b>FP01 : ปัจจุบัน ท่านมี/ใช้บริการทางการเงินดังต่อไปนี้หรือไม่</b>
+  </div>
+  
+<!------------------------------------------------------------------->
+
+  <div class="head2">
+  	  <span style="color: #ff0000;"><b>*</b></span>
+      <b>ก. บัญชีเงินฝากเพื่อใช้จ่าย</b>
+  </div>
+      
+      <div class="frame2">
+      	<input type="radio" name="FP01_1" value="0">ไม่มี/ไม่ใช้
+        <input style="margin-left: 100px;" type="radio" name="FP01_1" value="1">มี/ใช้
+      </div>
+      
+	<div id="FP07_1D" style="display: none;">
+        <div class="head3">
+            <b>FP07_1 : ท่านมีความต้องการใช้บริการประเภทนี้หรือไม่</b>
+        </div>
+        
+        <div class="frame3">
+      		<input type="radio" name="FP07_1" value="0">ไม่ต้องการ
+        	<input style="margin-left: 100px;" type="radio" name="FP07_1" value="1">ต้องการ
+      	</div>
+	</div>
+  
+<!------------------------------------------------------------------->
+
+  <div class="head2">
+  	  <span style="color: #ff0000;"><b>*</b></span>
+      <b>ข. บัญชีเงินฝากเพื่อการออม</b>
+  </div>
+      
+      <div class="frame2">
+      	<input type="radio" name="FP01_2" value="0">ไม่มี/ไม่ใช้
+        <input style="margin-left: 100px;" type="radio" name="FP01_2" value="1">มี/ใช้
+      </div>
+      
+	<div id="FP07_2D" style="display: none;">
+        <div class="head3">
+            <b>FP07_2 : ท่านมีความต้องการใช้บริการประเภทนี้หรือไม่</b>
+        </div>
+        
+        <div class="frame3">
+      		<input type="radio" name="FP07_2" value="0">ไม่ต้องการ
+        	<input style="margin-left: 100px;" type="radio" name="FP07_2" value="1">ต้องการ
+      	</div>
+	</div>
+  
+
+<!-------------------------------------------- NOTE -------------------------------------------->
+
+<div class="note">
+  <b>NOTE :</b>
+   <span class="remark">(C1.1_NOTE)</span>
+  <div id="rec01_note" class="notebox" contenteditable="true">*** เพิ่มฟังก์ชันพิมพ์ด้วยเสียง ***</div>
+</div>
+
+<div id="outer">
+  <div class="inner"><button onclick="back()">Back</button></div>
+  <div class="inner"><button onclick="index()">Index</button></div>
+  <div class="inner"><button onclick="next()">Next</button></div>
+</div>
+
+<button onclick="resetLocalStorage()">Reset localStorage</button>
+<button onclick="()">Check</button>
+
+
+<!----------------------------------------------------------------------------------------------------------->
+
+<script>
+
+<!--------------------------------------------------------------------->
+
+function back() {
+    saveToLocalStorage();
+    window.location.href = 'Chapter 1.html';}
+
+<!--------------------------------------------------------------------->
+
+function index() {
+    saveToLocalStorage();
+    window.location.href = 'index.html';}
+
+<!--------------------------------------------------------------------->
+
+function next() {
+    saveToLocalStorage();
+    window.location.href = 'Chapter 3.html';}
+
+<!--------------------------------------------------------------------->
+
+function checkDisability(input) {
+        var selectElement = document.getElementById(input);
+        var selectedValue = selectElement.value;
+        var message = document.createElement('div');
+        
+        if (selectedValue === ".") {
+        	alert('กรุณาเลือกคำตอบ');
+            message.textContent = ('กรุณาเลือกคำตอบ');
+            message.style.color = "red";
+            var selectDiv = selectElement.parentElement;
+            selectDiv.appendChild(message);
+            setTimeout(function() {
+                message.remove();
+            }, 3000);
+            selectElement.value = "";
+        }
+}
+
+<!--------------------------------------------------------------------->
+
+// อื่น ๆ ระบุ...
+
+function Others(fieldId) {
+    var field = document.getElementById(fieldId);
+    var others = document.getElementById(fieldId + "T");
+    var shouldShowOthers = {
+        "BT23": "1"
+    };
+
+    if (shouldShowOthers[fieldId] && field.value === shouldShowOthers[fieldId]) {
+        others.style.display = "block";
+        others.value = "";
+    } else {
+        others.style.display = "none";
+    }
+}
+
+<!--------------------------------------------------------------------->
+    
+function checkAndToggle(inputId, divId, customValue) {
+    var input = document.getElementById(inputId);
+    var div = document.getElementById(divId);
+
+    if (parseInt(input.value) === customValue) { 
+    	div.style.display = 'none';
+    } 
+    else {
+    	div.style.display = 'block';
+    }
+}
+    
+   function checkAndToggleR(inputId, divId, customValue) {
+        var input = document.querySelector('input[name="' + inputId + '"]:checked');
+        var div = document.getElementById(divId);
+        if (input && parseInt(input.value) === customValue) {
+            div.style.display = 'block';
+        } else {
+            div.style.display = 'none';
+        }
+    }
+    
+<!--------------------------------------------------------------------->
+    
+function allF() {
+    checkAndToggleR('FP01_1', 'FP07_1D', 0);
+    checkAndToggleR('FP01_2', 'FP07_2D', 0);
+}
+    
+<!--------------------------------------------------------------------->
+
+    var elements = document.querySelectorAll("[id]");
+    var inputIds = Array.from(elements).map(function(element) {
+        return element.id;
+    });
+    
+// radio
+
+	window.addEventListener('load', function() {
+
+    var radioButtons = document.querySelectorAll('input[type="radio"]');
+
+    radioButtons.forEach(function(radioButton) {
+        var storedValue = localStorage.getItem(radioButton.name);
+        if (storedValue === radioButton.value) {
+            radioButton.checked = true;
+        }
+    });
+
+    radioButtons.forEach(function(radioButton) {
+        radioButton.addEventListener('change', function() {
+            localStorage.setItem(this.name, this.value);
+            saveToLocalStorage();
+            allF();
+        });
+    });
+});
+    
+<!--------------------------------------------------------------------->
+
+function saveToLocalStorage() {
+    inputIds.forEach(function(id) {
+        localStorage.setItem(id, document.getElementById(id).value);
+    });
+}
+
+<!--------------------------------------------------------------------->
+
+function resetLocalStorage() {
+    localStorage.clear();
+    alert("localStorage has been reset.");
+
+    window.onload();
+
+    var radioButtons = document.querySelectorAll('input[type="radio"]');
+    radioButtons.forEach(function(radioButton) {
+        var storedValue = localStorage.getItem(radioButton.name);
+        if (storedValue === radioButton.value) {
+            radioButton.checked = true;
+        } else {
+            radioButton.checked = false;
+        }
+    });
+
+    allF();
+}
+
+<!--------------------------------------------------------------------->
+
+window.onload = function() {
+    inputIds.forEach(function(id) {
+        var inputField = document.getElementById(id);
+        inputField.addEventListener('input', function() {
+        saveToLocalStorage();
+        allF();
+        });
+
+        var value = localStorage.getItem(id);
+        if (value !== null) {
+            inputField.value = value;
+        } else {
+            inputField.value = "";
+        }
+    });
+    saveToLocalStorage();
+    allF();
+};
+
+</script>
+
+</body>
+</html>
