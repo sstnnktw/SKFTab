@@ -64,7 +64,7 @@
     width: 250px;
     margin-top: 15px;
   }
-  input.G{
+  input.G, select.G{
     border: 0.5px solid #000; 
     background-color: #EEEEEE;
     color: #BFBFBF;
@@ -719,6 +719,77 @@
 
         generateInputElements(components);
     </script>
+  
+<!--------------------------------------------- ง.  --------------------------------------------->
+
+<div class="head0"><b>หมวด ง.  หนี้สินของครัวเรือน</b></div>
+  
+<!--------------------------------------------- BT46 --------------------------------------------->
+
+  <div class="head">
+      <span style="color: #ff0000;"><b>*</b></span>
+      <b>BT46 :</b> (ปัจจุบัน) <b>ครัวเรือนของท่านมีหนี้สินหรือไม่</b>
+  </div>
+  
+  <div class="frame">
+      <select id="BT46" class="G">
+          <option value=""></option>
+          	<option value="0">0 - ไม่มี</option>
+          	<option value="1">1 - มี</option>
+      </select>
+  </div>
+  
+<div id="DDiv">
+  
+<!--------------------------------------------- BT47 --------------------------------------------->
+
+  <div class="head">
+      <b>BT47 : โปรดระบุจำนวนเงิน หรือมูลค่าคงเหลือ (ณ ปัจจุบัน) ของหนี้สินนั้นโดยประมาณ (บาท)</b>
+  </div>
+  
+  <div class="frame">
+      <input id="BT47" type="text">
+  </div>
+  
+<!--------------------------------------------- BT48 --------------------------------------------->
+
+  <div class="head">
+      <b>BT48 : ในรอบ 12 เดือนที่ผ่านมา สถานการณ์การชำระหนี้ของครัวเรือนท่านเป็นอย่างไร สามารถชำระหนี้ได้ตามกำหนดหรือไม่</b>
+  </div>
+  
+  <div class="frame">           
+      <select id="BT48">
+          <option value="">-- กรุณาเลือก --</option>
+          <option value=".">จ่ายได้ตามกำหนด</option>
+          	<option value="1">1 - ไม่มีปัญหาแต่อย่างใด</option>
+          	<option value="2">2 - มีปัญหาในการหาเงินมาชำระหนี้ในบางครั้ง</option>
+          	<option value="3">3 - มีปัญหาในการหาเงินมาชำระหนี้บ่อยครั้งที่ครบรอบการชำระเงินกู้</option>
+          <option value=".">จ่ายไม่ได้ตามกำหนด</option>
+          	<option value="4">4 - ผิดนัดหรือค้างการชำระหนี้เป็นบางครั้ง</option>
+          	<option value="5">5 - ผิดนัดหรือค้างชำระหนี้บ่อยครั้ง และมีปัญหาทางการเงินค่อนข้างมาก</option>
+      </select>
+  </div>
+  
+<!--------------------------------------------- BT49 --------------------------------------------->
+
+  <div class="head">
+      <b>BT49 : หากปัจจุบันรายได้ครัวเรือนของท่านลดลงร้อยละ 20 สถานการณ์การชำระหนี้ของครัวเรือนท่านจะเป็นอย่างไร</b>
+  </div>
+  
+  <div class="frame">           
+      <select id="BT49">
+          <option value="">-- กรุณาเลือก --</option>
+          <option value=".">จ่ายได้ตามกำหนด</option>
+          	<option value="1">1 - ไม่มีปัญหาแต่อย่างใด</option>
+          	<option value="2">2 - มีปัญหาในการหาเงินมาชำระหนี้ในบางครั้ง</option>
+          	<option value="3">3 - มีปัญหาในการหาเงินมาชำระหนี้บ่อยครั้งที่ครบรอบการชำระเงินกู้</option>
+          <option value=".">จ่ายไม่ได้ตามกำหนด</option>
+          	<option value="4">4 - ผิดนัดหรือค้างการชำระหนี้เป็นบางครั้ง</option>
+          	<option value="5">5 - ผิดนัดหรือค้างชำระหนี้บ่อยครั้ง และมีปัญหาทางการเงินค่อนข้างมาก</option>
+      </select>
+  </div>
+
+</div>
 
 <!-------------------------------------------- NOTE -------------------------------------------->
 
@@ -752,6 +823,26 @@ function index() {
 function next() {
     saveToLocalStorage();
     window.location.href = 'Chapter 2.html';}
+
+<!--------------------------------------------------------------------->
+
+function checkDisability(input) {
+        var selectElement = document.getElementById(input);
+        var selectedValue = selectElement.value;
+        var message = document.createElement('div');
+        
+        if (selectedValue === ".") {
+        	alert('กรุณาเลือกคำตอบ');
+            message.textContent = ('กรุณาเลือกคำตอบ');
+            message.style.color = "red";
+            var selectDiv = selectElement.parentElement;
+            selectDiv.appendChild(message);
+            setTimeout(function() {
+                message.remove();
+            }, 3000);
+            selectElement.value = "";
+        }
+}
 
 <!--------------------------------------------------------------------->
 
@@ -801,6 +892,9 @@ function checkAndToggle(inputId, divId, customValue) {
 function allF() {
     checkAndToggleR('BT23', 'BT23T');
     checkAndToggle('BT26', '2BDiv', 0);
+    checkAndToggle('BT46', 'DDiv', 0);
+    checkDisability('BT48')
+    checkDisability('BT49')
 }
     
 <!--------------------------------------------------------------------->
@@ -892,6 +986,7 @@ function getLocalStorage() {
     }
     var HM01N2 = localStorage.getItem("HM01N2");
     var HM01N3 = localStorage.getItem("HM01N3");
+	document.getElementById('BT46').value = parseInt(localStorage.getItem("AE00"));
 }
 
 <!--------------------------------------------------------------------->
