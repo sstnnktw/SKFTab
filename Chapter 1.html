@@ -156,8 +156,9 @@
           <option value="03">03 - ไม่ให้ความร่วมมือ</option>
           <option value="04">04 - ไม่เข้าข่าย (ครัวเรือนที่ไม่ใช่คนไทย/ผู้ตอบสัมภาษณ์อายุต่ำกว่า 15 ปี/บุคคลนอกครัวเรือนตอบแทน)</option>
           <option value="05">05 - อื่น ๆ (ระบุ)</option>
-      </select>
-      <br><br><span class="remark">ถ้าเลือกอื่น ๆ ให้ระบุเพิ่ม</span>
+      </select><br><br>
+      <span class="remark">if ENUM_SKF != 01 → ยุติการสัมภาษณ์</span><br>
+      <span class="remark">ถ้าเลือกอื่น ๆ ให้ระบุเพิ่ม</span>
       
       <div id="ENUM_SKFT" style="display: none;">
           <input id="ENUM_SKF_T" class="etc" type="text" placeholder="ระบุ">
