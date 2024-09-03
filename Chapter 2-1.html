@@ -61,9 +61,6 @@
     width: 120px;
     font-size: 16px;   
   }
-  input {
-    margin-left: 75px;
-  }
   select.S {
     width: 180px;
   }
@@ -71,7 +68,6 @@
     margin-top: 15px;
   }
   input.G {
-    margin-left: 0px;
     width: 80px;
     text-align: center;
     background-color: #F3F3F3;
@@ -79,6 +75,10 @@
     pointer-events: none;
   }
   input[type="radio"] {
+    height: 13px;
+    width: 13px; 
+  }
+  input[type="checkbox"] {
     height: 13px;
     width: 13px; 
   }
@@ -104,7 +104,7 @@
     table td {
         padding: 15px;
     	font-weight: normal;
-        text-align: left;
+        text-align: center;
     	vertical-align: top;
     }
     thead {
@@ -124,10 +124,10 @@
     padding: 10px;
   }
   .nn {
-    padding-left: 20px;
+    padding-left: 40px;
   }
   .nn2 {
-    padding-left: 40px;
+    padding-left: 20px;
   }
   .remark {
     color: #FF0000;
@@ -189,165 +189,188 @@
     <div class="remark">
     <u>remark</u>
     	<br><b>** เปิดให้บันทึกที่หัวหน้าครัวเรือน **</b>
-    	<br>- ข้อที่มี * หมายถึง ต้องมีการบันทึกข้อมูล <u>ปล่อย blank ไม่ได้</u>
+    	<br>** <b>เปิดถามเมื่อ FP08_2 → FP08_5  อย่างน้อย 1 รายการ = 0 หรือ 2</b>
     </div>
 </div>
 
 <div class="head0"><b>หมวด ก. การเข้าถึงบริการทางการเงิน</b></div>
+<div class="head"><b>ในการไปใช้บริการดังต่อไปนี้ ท่านเคยประสบปัญหาต่าง ๆ กับผู้ให้บริการ<u>ในระบบ</u>รายใด โดยตอบได้มากที่สุด 2 ราย ให้บันทึกตามผู้ให้บริการที่พบปัญหามากที่สุด</b></div>
 
   <div class="nn">
-      <b>แสดงการ์ดที่ 15 (การ์ดตัวเลือก)</b>
+      <b>แสดงการ์ดที่ 16 (การ์ดตัวเลือก)</b>
   </div>
 
 <!--------------------------------------------- FP01 --------------------------------------------->
 
-<table>
+<table id="table">
     <thead>
       <tr>
-        <th style="min-width: 200px;"><b>รายการ</b></th>
-        <th style="min-width: 150px;"><b>ปัจจุบัน ท่านมี/ใช้<br>บริการทางการเงิน<br>ต่อไปนี้หรือไม่</b></th>
-        <th style="min-width: 210px;"><b>ระบุแหล่ง/สถาบันการเงิน<br>ที่ท่านไปใช้บริการ</b>
-        <th style="min-width: 150px;"><b>ท่านมีความต้องการ<br>ใช้บริการดังกล่าว<br>หรือไม่</b></th>
-        <th style="min-width: 80px;"><b>FP08</b></th>
+        <th style="min-width: 210px;"><b>ประเภทบริการ</b></th>
+        <th style="min-width: 150px;"><b>ท่านเคยประสบ<br>ปัญหาการใช้บริการ<br>ในระบบหรือไม่</b></th>
+        <th style="min-width: 150px;"><b>ระบุผู้ให้บริการ<br><u>ในระบบ</u><br>ที่พบปัญหามากที่สุด</b></th>
+        <th style="min-width: 380px;"><b>ปัญหา (ตอบได้มากกว่า 1 ปัญหา)</b></th>
       </tr>
     </thead>
-    <tbody id="table">
-
-<script>
-
-  function createOptions(i) {
-      let options = '';
-      const fullOptions = [
-        '01 - ธ.พาณิชย์',
-        '02 - บ.เงินทุน/เครดิตฟองซิเอร์',
-        '03 - สถาบันการเงินเฉพาะกิจ (เช่น ธกส. ธ.ออมสิน ธ.อิสลาม)',
-        '04 - บ.บัตรเครดิต/สินเชื่อส่วนบุคคล',
-        '05 - บ.หลักทรัพย์/จัดการกองทุนรวม',
-        '06 - บ.ประกัน',
-        '07 - บ.เช่าซื้อ/ลิสซิ่ง',
-        '08 - สหกรณ์ออมทรัพย์/ชุมนุมสหกรณ์/เครดิตยูเนี่ยน',
-        '09 - สถาบันการเงินประชาชน',
-        '10 - กองทุนหมู่บ้านและชุมชนเมือง',
-        '11 - โรงรับจำนำ/สถานธนานุบาล/สถานธนานุเคราะห์',
-        '12 - แพลตฟอร์มออนไลน์สำหรับเงินกู้ (เช่น Shopee, LineBK)',
-        '13 - แพลตฟอร์มตัวกลางสำหรับการกู้ยืมระหว่างบุคคล (P2P Lending)',
-        '14 - แพลตฟอร์มออนไลน์เพื่อการใช้จ่ายหรือการชำระเงิน (เช่น Truemoney, Rabbit, Linepay)',
-        '15 - ผู้ให้บริการในลักษณะตัวแทน (เช่น ไปรษณีย์ ร้านสะดวกซื้อ บุญเติม)',
-        '16 - กลุ่มออมทรัพย์/องค์กรการเงินชุมชนที่รับฝากเงิน',
-        '17 - ญาติ/บุคคลในครัวเรือน',
-        '18 - นายทุน/บุคคลอื่นนอกครัวเรือน (เช่น เงินกู้นอกระบบ)',
-        '19 - อื่น ๆ (เช่น สวัสดิการบริษัท) ระบุ'
-      ];
-      const optionSets = {
-        1: ['01', '02', '03', '08', '09', '10', '14', '15', '16', '17', '18', '19'],
-        2: ['01', '02', '03', '08', '09', '10', '15', '16', '17', '18', '19'],
-        3: ['01', '02', '03', '08', '09', '10', '14', '15', '16', '17', '18', '19'],
-        4: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19'],
-        5: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '16', '17', '18', '19'],
-        6: ['01', '03', '04', '12'],
-        7: ['01', '03', '04', '05', '06', '07', '08', '09', '10', '14'],
-        8: ['01', '03', '04', '05', '06', '07', '08', '09', '10', '14'],
-        9: ['01', '03', '05', '06', '14'],
-        10: ['01', '03', '05', '14'],
-        11: ['01', '03', '05', '14']
-      };
-      const selectedOptions = optionSets[i] || fullOptions.map(opt => opt.slice(0, 2));
-      selectedOptions.forEach(opt => {
-        const fullOption = fullOptions.find(option => option.startsWith(opt));
-        options += `<option value="${opt}">${fullOption}</option>`;
-      });
-      return options;
-  }
-    
-  function InsertSub() {
-    const tableBody = document.getElementById('table');
-    const itemNames = [
-      "บัญชีเงินฝากเพื่อใช้จ่าย",
-      "บัญชีเงินฝากเพื่อการออม",
-      "โอนเงิน",
-      "ชำระเงิน (รวมชำระหนี้)",
-      "สินเชื่อ (ไม่รวมบัตรเครดิต)",
-      "บัตรเครดิต",
-      "ประกันชีวิต",
-      "ประกันอื่น ๆ",
-      "กองทุนรวม",
-      "หุ้น/หุ้นกู้ภาคเอกชน",
-      "พันธบัตรรัฐบาล"
-    ];
-
-    itemNames.forEach((item, i) => {
-        const row = document.createElement('tr');
-        
-        let fp0206 = '';
-        for (let j = 2; j <= (i < 5 ? 6 : 4); j++) {
-        	fp0206 += `
-              แหล่งที่ ${j - 1} : 
-              <select id="FP0${j}_${i+1}" onchange="updateOptions(${i+1}, ${j})">
-                <option value="">-- กรุณาเลือก --</option>
-                ${createOptions(i+1)}
-              </select>
-              <span class="gray">(FP0${j}_${i+1})</span><br><br>
-            `;
-        }
-
-      row.innerHTML = `
-      	<td><span style="color: #ff0000;"><b>* </b></span>${item}</td>
-      
-      	<td style="text-align: center;">
-            <select id="FP01_${i + 1}">
-                <option value="">-- กรุณาเลือก --</option>
-                <option value="0">0 - ไม่มี/ไม่ใช้</option>
-                <option value="1">1 - มี/ใช้</option>
-            </select><br><br>
-            <span class="gray">(FP01_${i + 1})</span>
-      	</td>
-        
-        <td>
-            ${fp0206}
-            ${i+1 <= 5 ? `
-                <br>
-                <div class="etc" id="FP0206_${i+1}_TDiv">
-                    <input id="FP0206_${i+1}_T" type="text" placeholder="ระบุแหล่งอื่น ๆ">
-                    <span class="gray">(FP_${i+1}T)</span><br><br>
-                </div>` : ''}<br>
-                <span class="remark">- เปิดให้บันทึกเมื่อ FP01_${i + 1} = 1</span><br><br>
-                <span class="remark">- ต้องเลือกแหล่ง/สถาบันการเงินก่อนหน้าก่อน จึงจะสามารถเลือกแหล่งถัดไปได้</span><br><br>
-                <span class="remark">- ตัวเลือกที่เลือกไปแล้ว <u>ไม่สามารถเลือกซ้ำได้</u> (หรือไม่แสดงตัวเลือกนั้นซ้ำ)</span><br><br>
-                <span class="remark">- ถ้าเลือกอื่น ๆ ให้ระบุเพิ่ม</span>
-        </td>
-
-        <td style="text-align: center;">
-            <select id="FP07_${i + 1}">
-                <option value="">-- กรุณาเลือก --</option>
-                <option value="0">0 - ไม่ต้องการ</option>
-                <option value="1">1 - ต้องการ</option>
-            </select><br><br>
-            <span class="gray">(FP07_${i + 1})</span><br><br>
-            <span class="remark">- เปิดให้บันทึกเมื่อ FP01_${i + 1} = 0</span>
-        </td>
-        
-        <td style="text-align: center;">
-        	${i+1 >= 2 && i+1 <= 5 ? `
-            	<input class="G" type="text" id="FP08_${i+1}">
-                <br><br>
-                <span class="gray">(FP08_${i + 1})</span><br><br>
-                <span class="remark">- โปรแกรมคำนวณให้</span><br>
-                <span class="remark">- ไม่สามารถแก้ไขได้</span>` : ''}
-        </td>
-        
-      `;
-      
-      tableBody.appendChild(row);
-    });    
-  }
-  
-  InsertSub();
-  
-</script>
-
-</tbody>
+    <tbody>
+      <!-- Rows will be added here by JavaScript -->
+    </tbody>
 </table>
 
+<script>
+    const formItems = [
+        {
+            title: "บัญชีเงินฝากเพื่อการออม",
+            id: "FP08_2", i:'2',
+            selectId: "FP09",
+            sources: [
+                { selectId: "FP10", checkboxes: ["FP10_1", "FP10_2", "FP10_3", "FP10_4", "FP10_5"] },
+                { selectId: "FP11", checkboxes: ["FP11_1", "FP11_2", "FP11_3", "FP11_4", "FP11_5"] }
+            ]
+        },
+        {
+            title: "โอนเงิน",
+            id: "FP08_3", i:'3',
+            selectId: "FP12",
+            sources: [
+                { selectId: "FP13", checkboxes: ["FP13_1", "FP13_2", "FP13_3", "FP13_4", "FP13_5"] },
+                { selectId: "FP14", checkboxes: ["FP14_1", "FP14_2", "FP14_3", "FP14_4", "FP14_5"] }
+            ]
+        },
+        {
+            title: "ชำระเงิน (รวมชำระหนี้)",
+            id: "FP08_4", i:'4',
+            selectId: "FP15",
+            sources: [
+                { selectId: "FP16", checkboxes: ["FP16_1", "FP16_2", "FP16_3", "FP16_4", "FP16_5"] },
+                { selectId: "FP17", checkboxes: ["FP17_1", "FP17_2", "FP17_3", "FP17_4", "FP17_5"] }
+            ]
+        },
+        {
+            title: "สินเชื่อ (ไม่รวมบัตรเครดิต)",
+            id: "FP08_5", i:'5',
+            selectId: "FP18",
+            sources: [
+                { selectId: "FP19", checkboxes: ["FP19_1", "FP19_2", "FP19_3", "FP19_4", "FP19_5"] },
+                { selectId: "FP20", checkboxes: ["FP20_1", "FP20_2", "FP20_3", "FP20_4", "FP20_5"] }
+            ]
+        }
+    ];
+
+    function createFormRow(item) {
+        let row = `
+            <tr>
+                <td rowspan="2">
+                    ${item.title}<br><br>
+                    ${item.id}<br><br>
+                    <input class="G" type="text" id="${item.id}"><br><br>
+                    <span class="remark">copy ${item.id} จาก Chapter 2 มาแสดง (แก้ไขไม่ได้)</span>
+                </td>
+                <td rowspan="2">
+                    <select id="${item.selectId}">
+                        <option value="">-- กรุณาเลือก --</option>
+                        <option value="0">0 - ไม่เคย</option>
+                        <option value="1">1 - เคย</option>
+                    </select><br><br>
+                    <span class="gray">(${item.selectId})</span><br><br><br>
+                    <span class="remark">เปิดให้บันทึกเมื่อ ${item.id} = 0 หรือ 2</span>
+                </td>
+        `;
+
+        item.sources.forEach((source, index) => {
+            row += `
+                <td style="text-align: left;">
+                    แหล่งที่ ${index + 1} :
+                    <span class="gray">(${source.selectId})</span><br><br>
+                    <select id="${source.selectId}">
+                        <option value="">-- กรุณาเลือก --</option>
+                        <option value="1">FP02_${item.i}</option>
+                        <option value="2">FP03_${item.i}</option>
+                        <option value="3">FP04_${item.i}</option>
+                        <option value="4">FP05_${item.i}</option>
+                        <option value="5">FP06_${item.i}</option>
+                    </select><br><br>
+                    <span class="remark">- เปิดให้บันทึกเมื่อ ${item.selectId} = 1</span><br><br>
+                    <span class="remark">- copy FP02-FP06 ที่เลือกไว้จาก Chapter 2 มาเป็นตัวเลือก</span><br><br>
+                    <span class="remark">- ต้องเลือกแหล่งที่ 1 ก่อน จึงจะสามารถเลือกแหล่งที่ 2 ได้</span><br><br>
+                    <span class="remark">- ตัวเลือกที่เลือกไปแล้ว <u>ไม่สามารถเลือกซ้ำได้</u> (หรือไม่แสดงตัวเลือกนั้นซ้ำ)</span>
+                </td>
+                <td style="text-align: left;">
+            `;
+
+            source.checkboxes.forEach(checkbox => {
+                row += `
+                    <input type="checkbox" id="${checkbox}">
+                    <label for="${checkbox}">${getCheckboxLabel(checkbox)}</label>                                       
+                    <span class="gray">(${checkbox})</span><br><br>
+                `;
+            });
+
+            row += `
+                    <span class="remark">- เปิดให้เลือกเมื่อ ${source.selectId} <> blank</span><br>
+                    </td></tr><tr>`;
+        });
+
+        row += `</tr>`;
+        return row;
+    }
+
+    function getCheckboxLabel(id) {
+        switch(id) {
+            case "FP10_1":
+            case "FP11_1":
+            case "FP13_1":
+            case "FP14_1":
+            case "FP16_1":
+            case "FP17_1":
+            case "FP19_1":
+            case "FP20_1":
+                return "อัตราดอกเบี้ย/ค่าธรรมเนียมที่กำหนดไม่เหมาะสม";
+            case "FP10_2":
+            case "FP11_2":
+            case "FP13_2":
+            case "FP14_2":
+            case "FP16_2":
+            case "FP17_2":
+            case "FP19_2":
+            case "FP20_2":
+                return "เงื่อนไข/ขั้นตอนการใช้บริการมีความยุ่งยาก";
+            case "FP10_3":
+            case "FP11_3":
+            case "FP13_3":
+            case "FP14_3":
+            case "FP16_3":
+            case "FP17_3":
+            case "FP19_3":
+            case "FP20_3":
+                return "ระยะทางไกล/จุดให้บริการน้อย";
+            case "FP10_4":
+            case "FP11_4":
+            case "FP13_4":
+            case "FP14_4":
+            case "FP16_4":
+            case "FP17_4":
+            case "FP19_4":
+            case "FP20_4":
+                return "ระบบหรือแอปพลิเคชันซับซ้อนใช้งานยาก";
+            case "FP10_5":
+            case "FP11_5":
+            case "FP13_5":
+            case "FP14_5":
+            case "FP16_5":
+            case "FP17_5":
+            case "FP19_5":
+            case "FP20_5":
+                return "ไม่ได้รับความเป็นธรรม/ถูกเอารัดเอาเปรียบ/ถูกหลอก";
+            default:
+                return "";
+        }
+    }
+
+    const tableBody = document.querySelector('#table tbody');
+    formItems.forEach(item => {
+        tableBody.innerHTML += createFormRow(item);
+    });
+</script>
 
 <!-------------------------------------------- NOTE -------------------------------------------->
 <!--
@@ -376,7 +399,7 @@
 
 function back() {
     saveToLocalStorage();
-    window.location.href = 'Chapter 1.html';}
+    window.location.href = 'Chapter 2.html';}
 
 <!--------------------------------------------------------------------->
 
@@ -387,8 +410,8 @@ function index() {
 <!--------------------------------------------------------------------->
 
 function next() {
-    saveToLocalStorage(); 
-    window.location.href = 'Chapter 2-1.html';}
+    saveToLocalStorage();
+    window.location.href = 'Chapter 2-2.html';}
 
 <!--------------------------------------------------------------------->
 
@@ -412,27 +435,25 @@ function checkDisability(input) {
 
 <!--------------------------------------------------------------------->
 
-function updateOptions(i, current) {
-    const selectedValues = [];
-    for (let j = 2; j <= (i < 5 ? 6 : 4); j++) {
-        const select = document.getElementById(`FP0${j}_${i}`);
-        if (select.value) selectedValues.push(select.value);
-    }
+    function FP08() {
+        const ids = ['FP08_2', 'FP08_3', 'FP08_4', 'FP08_5'];
+        const selectIds = ['FP09', 'FP12', 'FP15', 'FP18'];
 
-    for (let j = 2; j <= (i < 5 ? 6 : 4); j++) {
-        if (j === current) continue;
-        const select = document.getElementById(`FP0${j}_${i}`);
-        const previousValue = select.value;
-        select.innerHTML = '<option value="">-- กรุณาเลือก --</option>' + createOptions(i);
-        selectedValues.forEach(value => {
-            if (value !== previousValue) {
-                const option = select.querySelector(`option[value="${value}"]`);
-                if (option) option.remove();
+        ids.forEach((inputId, index) => {
+            const input = document.getElementById(inputId);
+            const select = document.getElementById(selectIds[index]);
+            const inputValue = parseInt(input.value);
+
+            if (inputValue === 0 || inputValue === 2) {
+                select.disabled = false;
+                select.style.backgroundColor = '';
+            } else {
+                select.disabled = true;
+                select.style.backgroundColor = '#EEEEEE';
+                select.value = '';
             }
         });
-        select.value = previousValue;
     }
-}
 
 <!--------------------------------------------------------------------->
 
@@ -467,77 +488,48 @@ function updateOptions(i, current) {
         }
     }
 
-
-
-<!--------------------------------------------------------------------->
-
-function Others() {
-  for (let i = 1; i <= 5; i++) {
-    let showOtherInput = false;
-    for (let j = 2; j <= 6; j++) {
-      const selectElement = document.getElementById(`FP0${j}_${i}`);
-      if (selectElement && selectElement.value === '19') {
-        showOtherInput = true;
-        break;
-      }
-    }
-    const otherInputDiv = document.getElementById(`FP0206_${i}_TDiv`);
-    if (otherInputDiv) {
-      otherInputDiv.style.display = showOtherInput ? 'block' : 'none';
-    }
-  }
-}
-
-<!--------------------------------------------------------------------->
-
-function calculateFP08() {
-  for (let i = 2; i <= 6; i++) {
-    const elements = ['FP02', 'FP03', 'FP04', 'FP05', 'FP06'].map(el => document.getElementById(`${el}_${i}`));
-    const values = elements.map(el => el.value.trim());
-
-    const allBlank = values.every(value => value === '');
-
-    if (allBlank) {
-      document.getElementById(`FP08_${i}`).value = '';
-    } else {
-      const range1to15OrBlank = values.every(value => value === '' || (parseInt(value) >= 1 && parseInt(value) <= 15));
-      const range16to19OrBlank = values.every(value => value === '' || (parseInt(value) >= 16 && parseInt(value) <= 19));
-
-      if (range1to15OrBlank) {
-        document.getElementById(`FP08_${i}`).value = '0';
-      } else if (range16to19OrBlank) {
-        document.getElementById(`FP08_${i}`).value = '1';
-      } else {
-        document.getElementById(`FP08_${i}`).value = '2';
-      }
-    }
-  }
-}
-
 <!--------------------------------------------------------------------->
 
 function allF() {
+    FP08();
 
-    for (let i = 1; i <= 11; i++) {
-        Custom(`FP01_${i}`, 0, `FP07_${i}`);
-        Custom(`FP01_${i}`, 1, `FP02_${i}`);
-        NotEmpty(`FP02_${i}`, `FP03_${i}`);
-        NotEmpty(`FP03_${i}`, `FP04_${i}`);
-        
-    	if (i <= 5) {
-            NotEmpty(`FP04_${i}`, `FP05_${i}`);
-            NotEmpty(`FP05_${i}`, `FP06_${i}`);
-    	}
-    }
+    const customPairs = [
+        ['FP09', 1, 'FP10'],
+        ['FP09', 1, 'FP11'],
+        ['FP12', 1, 'FP13'],
+        ['FP12', 1, 'FP14'],
+        ['FP15', 1, 'FP16'],
+        ['FP15', 1, 'FP17'],
+        ['FP18', 1, 'FP19'],
+        ['FP18', 1, 'FP20']
+    ];
 
-    for (let i = 1; i <= 11; i++) {
-        for (let j = 2; j <= (i < 5 ? 6 : 4); j++) {
-            updateOptions(i, j);
-        }
-    }
+    customPairs.forEach(pair => {
+        Custom(pair[0], pair[1], pair[2]);
+    });
     
-    Others();
-    calculateFP08();
+    
+    NotEmpty('FP10', 'FP11');
+    NotEmpty('FP13', 'FP14');
+    NotEmpty('FP16', 'FP17');
+    NotEmpty('FP19', 'FP20');
+
+    const notEmptyPairs = [
+        ['FP10', ['FP10_1', 'FP10_2', 'FP10_3', 'FP10_4', 'FP10_5']],
+        ['FP11', ['FP11_1', 'FP11_2', 'FP11_3', 'FP11_4', 'FP11_5']],
+        ['FP13', ['FP13_1', 'FP13_2', 'FP13_3', 'FP13_4', 'FP13_5']],
+        ['FP14', ['FP14_1', 'FP14_2', 'FP14_3', 'FP14_4', 'FP14_5']],
+        ['FP16', ['FP16_1', 'FP16_2', 'FP16_3', 'FP16_4', 'FP16_5']],
+        ['FP17', ['FP17_1', 'FP17_2', 'FP17_3', 'FP17_4', 'FP17_5']],
+        ['FP19', ['FP19_1', 'FP19_2', 'FP19_3', 'FP19_4', 'FP19_5']],
+        ['FP20', ['FP20_1', 'FP20_2', 'FP20_3', 'FP20_4', 'FP20_5']]
+    ];
+
+    notEmptyPairs.forEach(pair => {
+        pair[1].forEach(id => {
+            NotEmpty(pair[0], id);
+        });
+    });
 }
 
 <!--------------------------------------------------------------------->
