@@ -274,11 +274,11 @@
             var inputsHTML = '';
             components.forEach(function(component) {
                 inputsHTML += `
-                    <div class="head2">
+                    <div class="head">
                         <span style="color: #ff0000;"><b>*</b></span>
                         <b>${component.id} : ${component.label}</b>
                     </div>
-                    <div class="frame2">
+                    <div class="frame">
                         <select id="${component.id}">
                             <option value="">-- กรุณาเลือก --</option>
                 `;
@@ -340,11 +340,11 @@
             var inputsHTML = '';
             components.forEach(function(component) {
                 inputsHTML += `
-                    <div class="head2">
+                    <div class="head">
                         <span style="color: #ff0000;"><b>*</b></span>
                         <b>${component.id} : ${component.label}</b>
                     </div>
-                    <div class="frame2">
+                    <div class="frame">
                       <select id="${component.id}">
                           <option value="">-- กรุณาเลือก --</option>
                           <option value="0">0 - ไม่ทำ</option>
@@ -388,12 +388,12 @@
             var inputsHTML = '';
             components.forEach(function(component) {
                 inputsHTML += `
-                    <div class="head2">
+                    <div class="head">
                         <span style="color: #ff0000;"><b>*</b></span>
                         <b>${component.id} :</b> ${component.label}
                     </div>
-                    ${component.nn ? `<div class="nn2">${component.nn}</div>` : ''}
-                    <div class="frame2">
+                    ${component.nn ? `<div class="nn">${component.nn}</div>` : ''}
+                    <div class="frame">
                         <select id="${component.id}">
                             <option value="">-- กรุณาเลือก --</option>
                             <option value="0">0 - ไม่ใช้</option>
@@ -515,11 +515,11 @@
             var inputsHTML = '';
             components.forEach(function(component) {
                 inputsHTML += `
-                    <div class="head2">
+                    <div class="head">
                         <b>${component.id} :</b> ${component.label}
                     </div>
-                    ${component.nn ? `<div class="nn2">${component.nn}</div>` : ''}
-                    <div class="frame2">
+                    ${component.nn ? `<div class="nn">${component.nn}</div>` : ''}
+                    <div class="frame">
                       <select id="${component.id}">
                           <option value="">-- กรุณาเลือก --</option>
                           <option value="0">0 - ไม่เลือก</option>
@@ -561,12 +561,12 @@
             var inputsHTML = '';
             components.forEach(function(component) {
                 inputsHTML += `
-                    <div class="head2">
+                    <div class="head">
                         <span style="color: #ff0000;"><b>*</b></span>
                         <b>${component.id} :</b> ${component.label}
                     </div>
-                    ${component.nn ? `<div class="nn2">${component.nn}</div>` : ''}
-                    <div class="frame2">
+                    ${component.nn ? `<div class="nn">${component.nn}</div>` : ''}
+                    <div class="frame">
                       <select id="${component.id}">
                           <option value="">-- กรุณาเลือก --</option>
                           <option value="0">0 - ไม่เคย</option>
@@ -703,12 +703,12 @@
             var inputsHTML = '';
             components.forEach(function(component) {
                 inputsHTML += `
-                    <div class="head2">
+                    <div class="head">
                         <span style="color: #ff0000;"><b>*</b></span>
                         <b>${component.id} :</b> ${component.label}
                     </div>
                     ${component.nn ? `<div class="nn">${component.nn}</div>` : ''}
-                    <div class="frame2">
+                    <div class="frame">
                       <select id="${component.id}">
                           <option value="">-- กรุณาเลือก --</option>
                           <option value="0">0 - ไม่ทราบ</option>
